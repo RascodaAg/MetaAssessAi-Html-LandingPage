@@ -1,0 +1,919 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaAssess.ai - AI-Powered Research Quality Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* New Section Styles */
+        .bg-grid {
+            background-image: radial-gradient(circle, rgba(59,130,246,0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.02); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.2); border-radius: 3px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(59,130,246,0.4); }
+        
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fade-in-up 0.5s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; animation-fill-mode: both; }
+        .delay-200 { animation-delay: 0.2s; animation-fill-mode: both; }
+        
+        /* Transitions for interactive views */
+        .meta-view-content { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                        <i data-lucide="sparkles" class="w-5 h-5" stroke-width="1.5"></i>
+                    </div>
+                    <span class="text-lg font-semibold tracking-tight text-gray-900">MetaAssess.ai</span>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#features" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Features</a>
+                    <a href="#workflow" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Workflow</a>
+                    <a href="#pricing" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Pricing</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="hidden md:block text-sm font-medium text-gray-600 hover:text-gray-900">Log in</a>
+                    <a href="#" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-full hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+                        Start Assessment
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <div class="absolute inset-0 -z-10">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-r from-blue-100/50 to-purple-100/50 blur-3xl rounded-full opacity-60"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-8">
+                <span class="flex h-2 w-2 rounded-full bg-blue-600"></span>
+                <span class="text-sm font-medium text-blue-700">New: RoB 2.0 &amp; MINORS Support</span>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-semibold tracking-tight text-gray-900 mb-6 max-w-5xl mx-auto">
+                AI-Powered Research Quality Assessment in <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Minutes, Not Hours</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+                Transform your systematic reviews with automated Risk of Bias assessments. Get Cochrane-standard evaluations powered by advanced AI, saving weeks of manual work.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="#" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-blue-600 rounded-full hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/30">
+                    Start Free Assessment
+                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5" stroke-width="1.5"></i>
+                </a>
+                <a href="#" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors">
+                    <i data-lucide="play-circle" class="mr-2 w-5 h-5" stroke-width="1.5"></i>
+                    Watch Demo
+                </a>
+            </div>
+
+            <!-- Social Proof -->
+            <div class="mt-8 pt-8 border-t border-gray-100">
+                <p class="text-base text-gray-500 mb-6">Trusted by 500+ researchers at top institutions</p>
+                <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                    <span class="text-xl font-semibold text-gray-800 flex items-center gap-2"><i data-lucide="building-2" class="w-5 h-5"></i> Stanford Medicine</span>
+                    <span class="text-xl font-semibold text-gray-800 flex items-center gap-2"><i data-lucide="graduation-cap" class="w-5 h-5"></i> Harvard Medical</span>
+                    <span class="text-xl font-semibold text-gray-800 flex items-center gap-2"><i data-lucide="microscope" class="w-5 h-5"></i> Johns Hopkins</span>
+                    <span class="text-xl font-semibold text-gray-800 flex items-center gap-2"><i data-lucide="flask-conical" class="w-5 h-5"></i> Mayo Clinic</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Bento Grid -->
+    <section id="features" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <h2 class="text-4xl font-semibold tracking-tight text-gray-900 mb-4">Complete research intelligence</h2>
+                <p class="text-xl text-gray-500 max-w-2xl">Everything you need to conduct systematic reviews with speed and precision.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Feature 1: Dark Card (Large) -->
+                <div class="md:col-span-2 bg-[#0F172A] rounded-3xl p-8 md:p-12 relative overflow-hidden group">
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 text-blue-400">
+                            <i data-lucide="zap" class="w-6 h-6" stroke-width="1.5"></i>
+                        </div>
+                        <h3 class="text-3xl font-semibold tracking-tight text-white mb-4">Assess Studies in Minutes</h3>
+                        <p class="text-lg text-gray-400 max-w-md">Upload PDF research papers and receive comprehensive quality assessments instantly. Our AI delivers results 100x faster than manual review.</p>
+                        <a href="#" class="inline-flex items-center text-blue-400 mt-6 font-medium hover:text-blue-300 transition-colors">
+                            View Analysis Demo <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                    <div class="absolute right-0 bottom-0 w-1/3 h-full bg-gradient-to-l from-blue-900/20 to-transparent"></div>
+                    <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
+                </div>
+
+                <!-- Feature 2: Colored Card -->
+                <div class="md:col-span-1 bg-[#EEF2FF] rounded-3xl p-8 md:p-12 flex flex-col justify-between border border-blue-100">
+                    <div>
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 text-blue-600 shadow-sm">
+                            <i data-lucide="book-open-check" class="w-6 h-6" stroke-width="1.5"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold tracking-tight text-blue-950 mb-4">Cochrane Standards</h3>
+                        <p class="text-lg text-blue-900/70">Built on RoB 2.0 and MINORS frameworks. Every assessment follows established guidelines.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="md:col-span-1 bg-white border border-gray-200 rounded-3xl p-8 md:p-10 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center mb-6 text-gray-900 border border-gray-100">
+                        <i data-lucide="bar-chart-2" class="w-6 h-6" stroke-width="1.5"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold tracking-tight text-gray-900 mb-3">Visual Dashboard</h3>
+                    <p class="text-lg text-gray-600">See risk patterns across studies, compare quality scores, and identify trends at a glance.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="md:col-span-1 bg-white border border-gray-200 rounded-3xl p-8 md:p-10 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center mb-6 text-gray-900 border border-gray-100">
+                        <i data-lucide="crosshair" class="w-6 h-6" stroke-width="1.5"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold tracking-tight text-gray-900 mb-3">Multi-Model Verification</h3>
+                    <p class="text-lg text-gray-600">Pro Assessment uses multiple AI models to cross-validate results for maximum accuracy.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="md:col-span-1 bg-white border border-gray-200 rounded-3xl p-8 md:p-10 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center mb-6 text-gray-900 border border-gray-100">
+                        <i data-lucide="bot" class="w-6 h-6" stroke-width="1.5"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold tracking-tight text-gray-900 mb-3">AI Research Assistant</h3>
+                    <p class="text-lg text-gray-600">Ask questions about risk patterns or methodological concerns. Get instant answers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Assessment Workflow Section -->
+    <section id="workflow" class="border-y border-gray-200 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+            <!-- Header Area -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <h2 class="text-3xl font-semibold text-gray-900 mb-2 tracking-tight">
+                        AI-Powered Assessment Workflow
+                    </h2>
+                    <p class="text-gray-600 max-w-md">
+                        See how MetaAssess.ai analyzes research papers across quality frameworks with intelligent automation and expert precision.
+                    </p>
+                </div>
+                <!-- Top Tabs -->
+                <div class="flex flex-wrap gap-1 bg-gray-100 border border-gray-200 rounded-xl p-1.5">
+                    <button onclick="switchMetaTab('rob2', this)" class="meta-tab-btn active-tab flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-900 bg-white shadow-sm rounded-lg transition-all">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                        RoB 2.0
+                    </button>
+                    <button onclick="switchMetaTab('minors', this)" class="meta-tab-btn flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all rounded-lg">
+                        <i data-lucide="clipboard-check" class="w-4 h-4"></i>
+                        MINORS
+                    </button>
+                    <button onclick="switchMetaTab('extraction', this)" class="meta-tab-btn flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all rounded-lg">
+                        <i data-lucide="table-2" class="w-4 h-4"></i>
+                        Evidence
+                    </button>
+                    <button onclick="switchMetaTab('reports', this)" class="meta-tab-btn flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all rounded-lg">
+                        <i data-lucide="file-bar-chart-2" class="w-4 h-4"></i>
+                        Reports
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Display Area -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 min-h-[600px]">
+                <!-- Left Column: AI Assistant -->
+                <div class="lg:col-span-1 bg-gradient-to-b from-blue-50 to-white border border-blue-100 rounded-xl flex flex-col overflow-hidden h-full shadow-sm">
+                    <div class="p-4 border-b border-blue-100 flex items-center justify-between bg-white">
+                        <span class="text-sm font-semibold text-gray-900 flex items-center gap-2">
+                            <i data-lucide="bot" class="w-4 h-4 text-blue-600"></i>
+                            AI Research Assistant
+                        </span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                            <span class="text-xs text-gray-500">Active</span>
+                        </div>
+                    </div>
+
+                    <!-- Chat Area -->
+                    <div class="flex-1 p-4 space-y-4 overflow-y-auto text-sm custom-scrollbar bg-gradient-to-b from-blue-50/30 to-transparent">
+                        <div class="text-gray-400 text-center text-xs my-2">
+                            Assessment session started
+                        </div>
+
+                        <div class="flex gap-3 animate-fade-in-up">
+                            <div class="w-7 h-7 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 shrink-0 shadow-sm">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl rounded-tl-none text-gray-700 border border-gray-200 shadow-sm">
+                                Hello! I've analyzed your uploaded study. Ready to review the quality assessment?
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 flex-row-reverse animate-fade-in-up delay-100">
+                            <div class="w-7 h-7 rounded-lg bg-gray-200 flex items-center justify-center text-gray-700 shrink-0 shadow-sm">
+                                <i data-lucide="user" class="w-4 h-4"></i>
+                            </div>
+                            <div class="bg-blue-600 p-3 rounded-xl rounded-tr-none text-white shadow-sm">
+                                Show me the RoB 2.0 assessment
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 animate-fade-in-up delay-200">
+                            <div class="w-7 h-7 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 shrink-0 shadow-sm">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl rounded-tl-none text-gray-700 border border-gray-200 shadow-sm">
+                                <p class="mb-2">
+                                    I've evaluated all 5 domains. The study shows <span class="font-semibold text-green-600">Low Risk</span> for randomization but <span class="font-semibold text-yellow-600">Some Concerns</span> for missing data.
+                                </p>
+                                <div class="flex gap-1 mt-2">
+                                    <span class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce"></span>
+                                    <span class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.1s;"></span>
+                                    <span class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.2s;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Area -->
+                    <div class="p-3 border-t border-blue-100 bg-white">
+                        <div class="relative">
+                            <input type="text" placeholder="Ask about the assessment..." class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-3 pr-9 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all">
+                            <button class="absolute right-2 top-2 h-6 w-6 text-gray-400 hover:text-blue-600 transition-colors bg-white hover:bg-blue-50 rounded flex items-center justify-center shadow-sm">
+                                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Visualization -->
+                <div class="lg:col-span-3 flex flex-col gap-4 h-full">
+                    <!-- RoB 2.0 VIEW -->
+                    <div id="view-rob2" class="meta-view flex flex-col gap-4 h-full">
+                        <div class="relative flex-1 rounded-xl border border-gray-200 bg-white overflow-hidden shadow-lg bg-grid">
+                            <!-- State 1: Overview -->
+                            <div id="rob2-overview" class="meta-view-content absolute inset-0 p-8 opacity-100 scale-100 translate-y-0">
+                                <div class="max-w-4xl mx-auto">
+                                    <div class="text-center mb-8">
+                                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-medium mb-4">
+                                            <i data-lucide="shield-check" class="w-4 h-4"></i>
+                                            Cochrane RoB 2.0 Framework
+                                        </div>
+                                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Overall Risk Assessment</h3>
+                                        <div class="text-5xl font-bold text-yellow-600 mb-2">Some Concerns</div>
+                                        <p class="text-gray-600">Based on 5 domain evaluation</p>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="bg-gradient-to-br from-green-50 to-white rounded-xl p-5 border border-green-100 shadow-sm hover:shadow-md transition-shadow">
+                                            <div class="flex items-center justify-between mb-3">
+                                                <span class="text-sm font-semibold text-gray-900">Domain 1: Randomization</span>
+                                                <span class="px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">Low Risk</span>
+                                            </div>
+                                            <p class="text-xs text-gray-600 leading-relaxed">Computer-generated sequence with adequate allocation concealment</p>
+                                        </div>
+                                        <div class="bg-gradient-to-br from-green-50 to-white rounded-xl p-5 border border-green-100 shadow-sm hover:shadow-md transition-shadow">
+                                            <div class="flex items-center justify-between mb-3">
+                                                <span class="text-sm font-semibold text-gray-900">Domain 2: Deviations</span>
+                                                <span class="px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">Low Risk</span>
+                                            </div>
+                                            <p class="text-xs text-gray-600 leading-relaxed">No evidence of deviations from intended interventions</p>
+                                        </div>
+                                        <div class="bg-gradient-to-br from-yellow-50 to-white rounded-xl p-5 border border-yellow-200 shadow-sm hover:shadow-md transition-shadow">
+                                            <div class="flex items-center justify-between mb-3">
+                                                <span class="text-sm font-semibold text-gray-900">Domain 3: Missing Data</span>
+                                                <span class="px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-700 text-xs font-bold">Some Concerns</span>
+                                            </div>
+                                            <p class="text-xs text-gray-600 leading-relaxed">15% dropout rate with unclear missing data mechanism</p>
+                                        </div>
+                                        <div class="bg-gradient-to-br from-green-50 to-white rounded-xl p-5 border border-green-100 shadow-sm hover:shadow-md transition-shadow">
+                                            <div class="flex items-center justify-between mb-3">
+                                                <span class="text-sm font-semibold text-gray-900">Domain 4: Measurement</span>
+                                                <span class="px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">Low Risk</span>
+                                            </div>
+                                            <p class="text-xs text-gray-600 leading-relaxed">Appropriate and blinded outcome assessment</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- State 2: Detailed Analysis -->
+                            <div id="rob2-detailed" class="meta-view-content absolute inset-0 p-8 opacity-0 translate-y-4 scale-95 pointer-events-none">
+                                <div class="max-w-3xl mx-auto space-y-4">
+                                    <div class="bg-white rounded-xl p-6 border border-green-200 shadow-md hover:shadow-lg transition-shadow">
+                                        <div class="flex items-start gap-4">
+                                            <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center shrink-0 shadow-sm">
+                                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-600"></i>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="flex items-center justify-between mb-3">
+                                                    <h4 class="text-lg font-semibold text-gray-900">Domain 1: Randomization Process</h4>
+                                                    <span class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">Low Risk</span>
+                                                </div>
+                                                <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                                                    The study describes a computer-generated random sequence allocation with appropriate concealment. Block randomization was used with sealed envelopes ensuring allocation concealment.
+                                                </p>
+                                                <div class="flex items-center gap-2 text-xs text-blue-600 bg-blue-50 px-3 py-2 rounded-lg">
+                                                    <i data-lucide="quote" class="w-3.5 h-3.5"></i>
+                                                    <span>Evidence found in Methods section, page 3</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white rounded-xl p-6 border border-yellow-200 shadow-md hover:shadow-lg transition-shadow">
+                                        <div class="flex items-start gap-4">
+                                            <div class="w-12 h-12 rounded-xl bg-yellow-100 flex items-center justify-center shrink-0 shadow-sm">
+                                                <i data-lucide="alert-triangle" class="w-6 h-6 text-yellow-600"></i>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="flex items-center justify-between mb-3">
+                                                    <h4 class="text-lg font-semibold text-gray-900">Domain 3: Missing Outcome Data</h4>
+                                                    <span class="px-3 py-1 rounded-full bg-yellow-100 text-yellow-700 text-xs font-bold">Some Concerns</span>
+                                                </div>
+                                                <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                                                    15% dropout rate with unclear if missing data mechanism could depend on outcome. Sensitivity analysis was not performed to assess potential impact.
+                                                </p>
+                                                <div class="flex items-center gap-2 text-xs text-yellow-700 bg-yellow-50 px-3 py-2 rounded-lg">
+                                                    <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>
+                                                    <span>Limited information in Results section</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- State 3: Evidence -->
+                            <div id="rob2-evidence" class="meta-view-content absolute inset-0 p-8 opacity-0 translate-y-4 scale-95 pointer-events-none">
+                                <div class="max-w-3xl mx-auto">
+                                    <div class="bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden">
+                                        <div class="p-5 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200">
+                                            <div class="flex items-center gap-3">
+                                                <i data-lucide="file-search" class="w-5 h-5 text-blue-600"></i>
+                                                <h3 class="text-base font-semibold text-gray-900">Extracted Evidence from PDF</h3>
+                                            </div>
+                                        </div>
+                                        <div class="p-6 space-y-5">
+                                            <div class="border-l-4 border-blue-500 pl-4 bg-blue-50/50 py-3 pr-3 rounded-r-lg">
+                                                <div class="flex items-center gap-2 text-xs text-blue-600 font-semibold mb-2">
+                                                    <i data-lucide="bookmark" class="w-3.5 h-3.5"></i>
+                                                    <span>Page 3 • Methods Section</span>
+                                                </div>
+                                                <p class="text-sm text-gray-700 leading-relaxed italic">
+                                                    "Participants were randomly assigned in a 1:1 ratio using a computer-generated sequence with permuted block randomization (block size of 4). Allocation was concealed using sequentially numbered, sealed, opaque envelopes..."
+                                                </p>
+                                            </div>
+                                            <div class="border-l-4 border-yellow-500 pl-4 bg-yellow-50/50 py-3 pr-3 rounded-r-lg">
+                                                <div class="flex items-center gap-2 text-xs text-yellow-700 font-semibold mb-2">
+                                                    <i data-lucide="bookmark" class="w-3.5 h-3.5"></i>
+                                                    <span>Page 7 • Results Section</span>
+                                                </div>
+                                                <p class="text-sm text-gray-700 leading-relaxed italic">
+                                                    "Of 200 randomized participants, 170 (85%) completed the study. Reasons for withdrawal included loss to follow-up (n=18) and withdrawal of consent (n=12)."
+                                                </p>
+                                            </div>
+                                            <div class="border-l-4 border-green-500 pl-4 bg-green-50/50 py-3 pr-3 rounded-r-lg">
+                                                <div class="flex items-center gap-2 text-xs text-green-600 font-semibold mb-2">
+                                                    <i data-lucide="bookmark" class="w-3.5 h-3.5"></i>
+                                                    <span>Page 5 • Procedures</span>
+                                                </div>
+                                                <p class="text-sm text-gray-700 leading-relaxed italic">
+                                                    "Outcome assessors were blinded to treatment allocation. Primary outcomes were measured using validated scales administered by trained personnel."
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Navigation -->
+                        <div class="grid grid-cols-3 gap-3">
+                            <button onclick="setMetaSubState('rob2', 'overview', true)" class="relative p-3 rounded-lg bg-white border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all text-left group">
+                                <div class="text-xs font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                                    <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i>
+                                    Overview
+                                </div>
+                                <div class="h-1 w-full bg-gray-200 rounded-full overflow-hidden">
+                                    <div id="bar-rob2-overview" class="h-full bg-blue-600 w-full transition-all duration-[4000ms] ease-linear"></div>
+                                </div>
+                            </button>
+                            <button onclick="setMetaSubState('rob2', 'detailed', true)" class="relative p-3 rounded-lg bg-white border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all text-left group">
+                                <div class="text-xs font-semibold text-gray-600 mb-2 flex items-center gap-2">
+                                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+                                    Detailed
+                                </div>
+                                <div class="h-1 w-full bg-gray-200 rounded-full overflow-hidden">
+                                    <div id="bar-rob2-detailed" class="h-full bg-blue-600 w-0 transition-all duration-[4000ms] ease-linear"></div>
+                                </div>
+                            </button>
+                            <button onclick="setMetaSubState('rob2', 'evidence', true)" class="relative p-3 rounded-lg bg-white border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all text-left group">
+                                <div class="text-xs font-semibold text-gray-600 mb-2 flex items-center gap-2">
+                                    <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                                    Evidence
+                                </div>
+                                <div class="h-1 w-full bg-gray-200 rounded-full overflow-hidden">
+                                    <div id="bar-rob2-evidence" class="h-full bg-blue-600 w-0 transition-all duration-[4000ms] ease-linear"></div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- MINORS VIEW -->
+                    <div id="view-minors" class="meta-view hidden flex-col gap-4 h-full">
+                        <div class="relative flex-1 rounded-xl border border-gray-200 bg-white overflow-hidden shadow-lg bg-grid p-8">
+                            <div class="max-w-3xl mx-auto">
+                                <div class="text-center mb-8">
+                                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-purple-700 text-sm font-medium mb-4">
+                                        <i data-lucide="clipboard-check" class="w-4 h-4"></i>
+                                        MINORS Framework - Non-Randomized Studies
+                                    </div>
+                                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">Quality Assessment Score</h3>
+                                    <div class="text-5xl font-bold text-green-600 mb-2">18/24</div>
+                                    <p class="text-gray-600">Moderate to High Quality Study</p>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-4 p-4 bg-gradient-to-r from-green-50 to-white rounded-xl border border-green-100 shadow-sm">
+                                        <div class="flex-1">
+                                            <span class="text-sm font-semibold text-gray-800">1. Clearly stated aim</span>
+                                        </div>
+                                        <span class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-sm font-bold min-w-[48px] text-center">2</span>
+                                    </div>
+                                    <div class="flex items-center gap-4 p-4 bg-gradient-to-r from-green-50 to-white rounded-xl border border-green-100 shadow-sm">
+                                        <div class="flex-1">
+                                            <span class="text-sm font-semibold text-gray-800">2. Inclusion of consecutive patients</span>
+                                        </div>
+                                        <span class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-sm font-bold min-w-[48px] text-center">2</span>
+                                    </div>
+                                    <div class="flex items-center gap-4 p-4 bg-gradient-to-r from-yellow-50 to-white rounded-xl border border-yellow-200 shadow-sm">
+                                        <div class="flex-1">
+                                            <span class="text-sm font-semibold text-gray-800">3. Prospective collection of data</span>
+                                        </div>
+                                        <span class="px-3 py-1.5 rounded-full bg-yellow-100 text-yellow-700 text-sm font-bold min-w-[48px] text-center">1</span>
+                                    </div>
+                                    <div class="flex items-center gap-4 p-4 bg-gradient-to-r from-green-50 to-white rounded-xl border border-green-100 shadow-sm">
+                                        <div class="flex-1">
+                                            <span class="text-sm font-semibold text-gray-800">4. Endpoints appropriate to study aim</span>
+                                        </div>
+                                        <span class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-sm font-bold min-w-[48px] text-center">2</span>
+                                    </div>
+                                    <div class="flex items-center gap-4 p-4 bg-gradient-to-r from-green-50 to-white rounded-xl border border-green-100 shadow-sm">
+                                        <div class="flex-1">
+                                            <span class="text-sm font-semibold text-gray-800">5. Unbiased assessment of endpoints</span>
+                                        </div>
+                                        <span class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-sm font-bold min-w-[48px] text-center">2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Evidence Extraction VIEW -->
+                    <div id="view-extraction" class="meta-view hidden flex-col gap-4 h-full">
+                        <div class="relative flex-1 rounded-xl border border-gray-200 bg-white overflow-hidden shadow-lg bg-grid flex flex-col p-8">
+                             <div class="text-center max-w-lg mx-auto mb-8">
+                                <h3 class="text-xl font-semibold tracking-tight text-gray-900 mb-2">Automated Data Extraction</h3>
+                                <p class="text-sm text-gray-500">The AI automatically identifies and tabulates PICO elements, sample sizes, and primary outcomes into a clean Excel-ready format.</p>
+                             </div>
+
+                             <!-- Data Table Visualization -->
+                             <div class="flex-1 border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm flex flex-col">
+                                <div class="bg-gray-50 border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <i data-lucide="table-2" class="w-4 h-4 text-gray-500"></i>
+                                        <span class="text-xs font-semibold text-gray-700">Extracted Data Preview</span>
+                                    </div>
+                                    <button class="text-xs font-medium text-blue-600 hover:text-blue-700 flex items-center gap-1">
+                                        <i data-lucide="download" class="w-3 h-3"></i> Export .xlsx
+                                    </button>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left text-xs">
+                                        <thead class="bg-gray-50 text-gray-500 font-medium border-b border-gray-200">
+                                            <tr>
+                                                <th class="px-4 py-3">Study ID</th>
+                                                <th class="px-4 py-3">Population</th>
+                                                <th class="px-4 py-3">Intervention</th>
+                                                <th class="px-4 py-3">Comparison</th>
+                                                <th class="px-4 py-3">Outcome</th>
+                                                <th class="px-4 py-3">Sample (N)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-gray-100 text-gray-700">
+                                            <tr class="hover:bg-blue-50/50 transition-colors">
+                                                <td class="px-4 py-3 font-medium text-blue-600">Smith 2023</td>
+                                                <td class="px-4 py-3">Patients with T2DM</td>
+                                                <td class="px-4 py-3">Metformin + Diet</td>
+                                                <td class="px-4 py-3">Placebo + Diet</td>
+                                                <td class="px-4 py-3 font-medium text-green-700">HbA1c Reduction</td>
+                                                <td class="px-4 py-3 bg-gray-50/50">245</td>
+                                            </tr>
+                                            <tr class="hover:bg-blue-50/50 transition-colors">
+                                                <td class="px-4 py-3 font-medium text-blue-600">Chen 2022</td>
+                                                <td class="px-4 py-3">Adults &gt; 65yrs</td>
+                                                <td class="px-4 py-3">High-intensity interval</td>
+                                                <td class="px-4 py-3">Moderate continuous</td>
+                                                <td class="px-4 py-3 font-medium text-green-700">Cardio Fitness (VO2)</td>
+                                                <td class="px-4 py-3 bg-gray-50/50">120</td>
+                                            </tr>
+                                            <tr class="hover:bg-blue-50/50 transition-colors">
+                                                <td class="px-4 py-3 font-medium text-blue-600">Rodriguez 2024</td>
+                                                <td class="px-4 py-3">Adolescents w/ Anxiety</td>
+                                                <td class="px-4 py-3">CBT App</td>
+                                                <td class="px-4 py-3">Waitlist Control</td>
+                                                <td class="px-4 py-3 font-medium text-green-700">HAM-A Score</td>
+                                                <td class="px-4 py-3 bg-gray-50/50">88</td>
+                                            </tr>
+                                            <tr class="hover:bg-blue-50/50 transition-colors bg-blue-50/30">
+                                                <td class="px-4 py-3 font-medium text-blue-600">Current Study</td>
+                                                <td class="px-4 py-3 text-blue-800">Hypertensive Adults</td>
+                                                <td class="px-4 py-3 text-blue-800">Drug A (10mg)</td>
+                                                <td class="px-4 py-3 text-blue-800">Placebo</td>
+                                                <td class="px-4 py-3 font-medium text-green-700">Systolic BP</td>
+                                                <td class="px-4 py-3 bg-blue-50/50 font-semibold">200</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Reports VIEW -->
+                    <div id="view-reports" class="meta-view hidden flex-col gap-4 h-full">
+                        <div class="relative flex-1 rounded-xl border border-gray-200 bg-white overflow-hidden shadow-lg bg-grid flex flex-col p-8">
+                             <div class="text-center max-w-lg mx-auto mb-8">
+                                <h3 class="text-xl font-semibold tracking-tight text-gray-900 mb-2">Publication-Ready Exports</h3>
+                                <p class="text-sm text-gray-500">Generate PRISMA flow diagrams and RevMan-compatible risk of bias tables with a single click.</p>
+                             </div>
+
+                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
+                                <!-- PRISMA Card -->
+                                <div class="border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow bg-white flex flex-col items-center justify-center text-center">
+                                    <div class="mb-4 relative w-32 h-24 opacity-80">
+                                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-6 border border-gray-300 rounded bg-gray-50"></div>
+                                        <div class="absolute top-6 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-gray-300"></div>
+                                        <div class="absolute top-10 left-1/2 -translate-x-1/2 w-16 h-6 border border-blue-200 rounded bg-blue-50"></div>
+                                        <div class="absolute top-16 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-gray-300"></div>
+                                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-6 border border-green-200 rounded bg-green-50"></div>
+                                    </div>
+                                    <h4 class="text-sm font-semibold text-gray-900 mb-1">PRISMA Flow Diagram</h4>
+                                    <p class="text-xs text-gray-500 mb-4">Auto-populated flow chart</p>
+                                    <button class="text-xs bg-gray-900 text-white px-3 py-1.5 rounded-full hover:bg-gray-800 transition-colors flex items-center gap-1.5">
+                                        <i data-lucide="download" class="w-3 h-3"></i> Download PDF
+                                    </button>
+                                </div>
+
+                                <!-- RevMan Card -->
+                                <div class="border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow bg-white flex flex-col items-center justify-center text-center">
+                                    <div class="mb-4 grid grid-cols-5 gap-1 w-32 opacity-80">
+                                        <div class="h-4 w-4 rounded-full bg-green-500"></div><div class="h-4 w-4 rounded-full bg-green-500"></div><div class="h-4 w-4 rounded-full bg-yellow-400"></div><div class="h-4 w-4 rounded-full bg-green-500"></div><div class="h-4 w-4 rounded-full bg-green-500"></div>
+                                        <div class="h-4 w-4 rounded-full bg-green-500"></div><div class="h-4 w-4 rounded-full bg-red-500"></div><div class="h-4 w-4 rounded-full bg-yellow-400"></div><div class="h-4 w-4 rounded-full bg-green-500"></div><div class="h-4 w-4 rounded-full bg-green-500"></div>
+                                        <div class="h-4 w-4 rounded-full bg-green-500"></div><div class="h-4 w-4 rounded-full bg-green-500"></div><div class="h-4 w-4 rounded-full bg-green-500"></div><div class="h-4 w-4 rounded-full bg-green-500"></div><div class="h-4 w-4 rounded-full bg-green-500"></div>
+                                    </div>
+                                    <h4 class="text-sm font-semibold text-gray-900 mb-1">Risk of Bias Table</h4>
+                                    <p class="text-xs text-gray-500 mb-4">RevMan 5.4 Compatible</p>
+                                    <button class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full hover:bg-blue-700 transition-colors flex items-center gap-1.5">
+                                        <i data-lucide="download" class="w-3 h-3"></i> Export CSV
+                                    </button>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-24 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-semibold tracking-tight text-gray-900 mb-4">From PDF to Insight in 4 Steps</h2>
+                <p class="text-xl text-gray-500">Streamline your workflow with our intuitive process.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gray-100 -z-10"></div>
+
+                <!-- Step 1 -->
+                <div class="relative">
+                    <div class="w-24 h-24 bg-white border border-gray-200 rounded-2xl flex items-center justify-center mb-6 shadow-sm mx-auto md:mx-0">
+                        <span class="text-3xl font-bold text-gray-200">01</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center md:text-left">Create Project</h3>
+                    <p class="text-lg text-gray-600 text-center md:text-left">Organize your systematic review into folders for batch processing.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative">
+                    <div class="w-24 h-24 bg-white border border-gray-200 rounded-2xl flex items-center justify-center mb-6 shadow-sm mx-auto md:mx-0">
+                        <span class="text-3xl font-bold text-gray-200">02</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center md:text-left">Upload Studies</h3>
+                    <p class="text-lg text-gray-600 text-center md:text-left">Drag and drop PDF papers. We automatically categorize each study.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative">
+                    <div class="w-24 h-24 bg-white border-blue-200 rounded-2xl flex items-center justify-center mb-6 shadow-sm mx-auto md:mx-0 ring-4 ring-blue-50">
+                        <span class="text-3xl font-bold text-blue-600">03</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center md:text-left">AI Assessment</h3>
+                    <p class="text-lg text-gray-600 text-center md:text-left">Our AI analyzes domains using RoB 2.0 or MINORS in minutes.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative">
+                    <div class="w-24 h-24 bg-white border border-gray-200 rounded-2xl flex items-center justify-center mb-6 shadow-sm mx-auto md:mx-0">
+                        <span class="text-3xl font-bold text-gray-200">04</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center md:text-left">Export &amp; Share</h3>
+                    <p class="text-lg text-gray-600 text-center md:text-left">Generate publication-ready Excel/PDF reports and share with your team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-24 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold tracking-tight text-gray-900 mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-xl text-gray-500">Start for free, upgrade when you need more power.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Free Plan -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-200 flex flex-col">
+                    <div class="mb-4">
+                        <span class="text-lg font-medium text-gray-900">Free</span>
+                        <div class="mt-2 text-4xl font-semibold tracking-tight text-gray-900">$0</div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3 text-gray-600"><i data-lucide="check" class="w-5 h-5 text-gray-400"></i> 3 Assessments/mo</li>
+                        <li class="flex items-center gap-3 text-gray-600"><i data-lucide="check" class="w-5 h-5 text-gray-400"></i> Basic RoB 2.0</li>
+                        <li class="flex items-center gap-3 text-gray-600"><i data-lucide="check" class="w-5 h-5 text-gray-400"></i> PDF Export</li>
+                    </ul>
+                    <a href="#" class="w-full block text-center py-3 rounded-xl border border-gray-200 text-gray-900 font-medium hover:bg-gray-50 transition-colors">Start Free</a>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="bg-[#0F172A] rounded-3xl p-8 border border-gray-800 flex flex-col relative shadow-xl transform md:-translate-y-4">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full">Most Popular</div>
+                    <div class="mb-4">
+                        <span class="text-lg font-medium text-white">Professional</span>
+                        <div class="mt-2 text-4xl font-semibold tracking-tight text-white">$49<span class="text-lg text-gray-400 font-normal">/mo</span></div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3 text-gray-300"><i data-lucide="check" class="w-5 h-5 text-blue-500"></i> 50 Assessments/mo</li>
+                        <li class="flex items-center gap-3 text-gray-300"><i data-lucide="check" class="w-5 h-5 text-blue-500"></i> Pro Accuracy Model</li>
+                        <li class="flex items-center gap-3 text-gray-300"><i data-lucide="check" class="w-5 h-5 text-blue-500"></i> Excel &amp; Word Export</li>
+                        <li class="flex items-center gap-3 text-gray-300"><i data-lucide="check" class="w-5 h-5 text-blue-500"></i> AI Assistant Chat</li>
+                    </ul>
+                    <a href="#" class="w-full block text-center py-3 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors">Get Professional</a>
+                </div>
+
+                <!-- Team Plan -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-200 flex flex-col">
+                    <div class="mb-4">
+                        <span class="text-lg font-medium text-gray-900">Team</span>
+                        <div class="mt-2 text-4xl font-semibold tracking-tight text-gray-900">$199<span class="text-lg text-gray-400 font-normal">/mo</span></div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3 text-gray-600"><i data-lucide="check" class="w-5 h-5 text-gray-400"></i> Unlimited Assessments</li>
+                        <li class="flex items-center gap-3 text-gray-600"><i data-lucide="check" class="w-5 h-5 text-gray-400"></i> 5 Team Members</li>
+                        <li class="flex items-center gap-3 text-gray-600"><i data-lucide="check" class="w-5 h-5 text-gray-400"></i> Collaborative Folders</li>
+                        <li class="flex items-center gap-3 text-gray-600"><i data-lucide="check" class="w-5 h-5 text-gray-400"></i> Priority Support</li>
+                    </ul>
+                    <a href="#" class="w-full block text-center py-3 rounded-xl border border-gray-200 text-gray-900 font-medium hover:bg-gray-50 transition-colors">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+                <!-- Decorative Circles -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl"></div>
+
+                <div class="relative z-10 max-w-3xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-6">Ready to accelerate your research?</h2>
+                    <p class="text-xl text-blue-100 mb-10">Join thousands of researchers using MetaAssess.ai to conduct higher quality systematic reviews in less time.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#" class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-blue-600 bg-white rounded-full hover:bg-blue-50 transition-colors">
+                            Get Started Free
+                        </a>
+                        <a href="#" class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white border border-white/30 rounded-full hover:bg-white/10 transition-colors">
+                            View Demo Video
+                        </a>
+                    </div>
+                    <p class="mt-6 text-sm text-blue-200">No credit card required. Cancel anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-white">
+                            <i data-lucide="sparkles" class="w-3 h-3" stroke-width="2"></i>
+                        </div>
+                        <span class="text-base font-bold text-gray-900">MetaAssess.ai</span>
+                    </div>
+                    <p class="text-sm text-gray-500">Automating research quality assessment with transparency and precision.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Product</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-blue-600">Features</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-blue-600">Integrations</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-blue-600">Pricing</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-blue-600">Changelog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Resources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-blue-600">Documentation</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-blue-600">RoB 2.0 Guide</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-blue-600">Blog</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-blue-600">Community</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-blue-600">About</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-blue-600">Security</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-blue-600">Contact</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-blue-600">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-400">© 2024 MetaAssess.ai. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-gray-400 hover:text-gray-600"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-gray-600"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-gray-600"><i data-lucide="github" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Interactive Assessment Logic
+        const metaState = {
+            currentTab: 'rob2',
+            subStates: {
+                rob2: ['overview', 'detailed', 'evidence']
+            },
+            interval: null,
+            subIndex: 0
+        };
+
+        function switchMetaTab(tabName, btn) {
+            // Update Tab Styling
+            document.querySelectorAll('.meta-tab-btn').forEach(b => {
+                b.className = 'meta-tab-btn flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all rounded-lg';
+            });
+            btn.className = 'meta-tab-btn flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-900 bg-white shadow-sm rounded-lg transition-all';
+
+            // Show/Hide Views
+            document.querySelectorAll('.meta-view').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('flex');
+            });
+            const view = document.getElementById('view-' + tabName);
+            if (view) {
+                view.classList.remove('hidden');
+                view.classList.add('flex');
+            }
+
+            metaState.currentTab = tabName;
+            
+            // Stop auto-rotation if switching away from Rob2 or clicking tabs
+            if(tabName !== 'rob2') {
+                clearInterval(metaState.interval);
+            }
+        }
+
+        function setMetaSubState(parent, sub, manual = false) {
+            if(manual) clearInterval(metaState.interval);
+
+            // Hide all sub-contents in the parent view
+            const contents = document.querySelectorAll(`#view-${parent} .meta-view-content`);
+            contents.forEach(el => {
+                el.classList.add('opacity-0', 'translate-y-4', 'scale-95', 'pointer-events-none');
+                el.classList.remove('opacity-100', 'translate-y-0', 'scale-100', 'pointer-events-auto');
+            });
+
+            // Show target
+            const target = document.getElementById(`${parent}-${sub}`);
+            if(target) {
+                target.classList.remove('opacity-0', 'translate-y-4', 'scale-95', 'pointer-events-none');
+                target.classList.add('opacity-100', 'translate-y-0', 'scale-100', 'pointer-events-auto');
+            }
+
+            // Update Progress Bars
+            const subs = metaState.subStates[parent];
+            const currentIndex = subs.indexOf(sub);
+            
+            subs.forEach((s, idx) => {
+                const bar = document.getElementById(`bar-${parent}-${s}`);
+                if(bar) {
+                    if (idx < currentIndex) {
+                        bar.style.width = '100%';
+                        bar.style.transition = 'none'; 
+                    } else if (idx === currentIndex) {
+                        bar.style.transition = 'width 4s linear';
+                        bar.style.width = '100%';
+                    } else {
+                        bar.style.width = '0%';
+                        bar.style.transition = 'none';
+                    }
+                }
+            });
+        }
+
+        // Initialize Auto-Play for RoB2
+        function initAutoPlay() {
+            const subs = metaState.subStates.rob2;
+            let idx = 0;
+            
+            // Reset bars
+            subs.forEach(s => {
+                const bar = document.getElementById(`bar-rob2-${s}`);
+                if(bar) bar.style.width = '0%';
+            });
+
+            setMetaSubState('rob2', subs[0]);
+
+            metaState.interval = setInterval(() => {
+                idx = (idx + 1) % subs.length;
+                
+                // Reset bars if restarting
+                if(idx === 0) {
+                    subs.forEach(s => {
+                        const bar = document.getElementById(`bar-rob2-${s}`);
+                        if(bar) {
+                            bar.style.transition = 'none';
+                            bar.style.width = '0%';
+                        }
+                    });
+                    // Force reflow
+                    void document.body.offsetWidth;
+                }
+                
+                setMetaSubState('rob2', subs[idx]);
+            }, 4000);
+        }
+
+        // Start animation on load
+        document.addEventListener('DOMContentLoaded', () => {
+            initAutoPlay();
+        });
+
+    </script>
+
+
+</body></html>
